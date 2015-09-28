@@ -10,6 +10,7 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  Serial.println("");
   Serial.println("------------------------");
   Serial.println("ESP8266 Arduino Examples");
   Serial.println("Hello world serial print");
