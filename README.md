@@ -1,6 +1,8 @@
 Arduino examples for ESP8266 WiFi chip
 ===========================================
 
+[![Join the chat at https://gitter.im/zenmanenergy/ESP8266-Arduino-Examples](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zenmanenergy/ESP8266-Arduino-Examples?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The purpose of this repository is to display "Hello World" style examples for the ESP8266 Arduino board.
 Historically the first program you learn to write simply displays the words "Hello World" on the screen. The reason
 for printing these words is to simply demonstrate that you have properly setup a programming environment. In the world
