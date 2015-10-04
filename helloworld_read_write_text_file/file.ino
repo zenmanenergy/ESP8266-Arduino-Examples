@@ -49,6 +49,7 @@ boolean fileWrite(String name, String content){
 
 String fileRead(String name){
   //read file from SPIFFS and store it as a String variable
+  String contents;
   File file = SPIFFS.open(name.c_str(), "r");
   if (!file) {
     String errorMessage = "Can't open '" + name + "' !\r\n";
@@ -56,17 +57,34 @@ String fileRead(String name){
     return "FILE ERROR";
   }
   else {
-    char buf[1024];
-    int siz = file.size();
-    while(siz > 0) {
-      size_t len = std::min((int)(sizeof(buf) - 1), siz);
-      //Again
-      file.read((uint8_t *)buf, len);
-      buf[len] = 0;
-      siz -= sizeof(buf) - 1;
+    
+    // this is going to get the number of bytes in the file and give us the value in an integer
+    int fileSize = file.size();
+    int chunkSize=1024;
+    //This is a character array to store a chunk of the file.
+    //We'll store 1024 characters at a time
+    char buf[chunkSize];
+    int numberOfChunks=(fileSize/chunkSize)+1;
+    
+    int count=0;
+    int remainingChunks=fileSize;
+    for (int i=1; i <= numberOfChunks; i++){
+      if (remainingChunks-chunkSize < 0){
+        chunkSize=remainingChunks;
+      }
+      file.read((uint8_t *)buf, chunkSize-1);
+      remainingChunks=remainingChunks-chunkSize;
+      contents+=String(buf);
     }
     file.close();
-    return String(buf);
+    return contents;
   }
+}
+
+
+boolean fileRemove(String name){
+  //read file from SPIFFS and store it as a String variable
+  SPIFFS.remove(name.c_str());
+  return true;
 }
 
