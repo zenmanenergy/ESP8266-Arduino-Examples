@@ -22,8 +22,8 @@
 #include <ESP8266WiFi.h>
 
 //these are your wifi router's name and password
-String internetSSID="";
-String internetpwd="";
+String internetSSID="************";
+String internetpwd="************";
 
 //these are used for the timer function below
 unsigned long interval = 500;
@@ -77,6 +77,10 @@ void wifiConnect(){
     } else{
       //If the wifi status has changed and it's not currently connected, begin the connection.
       Serial.println("No Connection...attempting to connect");
+      Serial.print("internetSSID:");
+      Serial.println(internetSSID.c_str());
+      Serial.print("internetpwd:");
+      Serial.println(internetpwd.c_str());
       WiFi.begin(internetSSID.c_str(), internetpwd.c_str());
     }
     lastWiFiStatus=WiFi.status();
