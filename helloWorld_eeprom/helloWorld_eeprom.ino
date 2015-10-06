@@ -13,29 +13,33 @@
 
 
 */
+
 #include <EEPROM.h>
+#include "./eepromSimple.h"
+eepromSimple eeprom;
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Hello World - EEPROM");
-  EEPROM.begin(512);
-
-  String allEEPROMVariables=eepromList();
-  Serial.println(allEEPROMVariables);
+  Serial.println("");
+  Serial.println("------------------------");
+  Serial.println("ESP8266 Arduino Examples");
+  Serial.println("EEPROM examples");
+  Serial.println("by Steve Nelson");
+  Serial.println("------------------------");
+  eeprom.begin(512);
+  //eeprom.clear();
+  eeprom.set("firstname","nicole");
+  eeprom.set("lastname","fewell");
+  Serial.println(eeprom.list());
+  eeprom.remove("lastname");
+  Serial.println(eeprom.list());
+  eeprom.set("lastname","nelson");
+  Serial.println(eeprom.list());
   
-  eepromSet("firstname","Steve");
-  eepromSet("lastname","Nelson");
-  String firstName=eepromGet("firstname");
-  String lastName=eepromGet("lastname");
-  Serial.print("hello ");
-  Serial.println(firstName);
-  Serial.println("hello..");
-  Serial.print("Goodbye Mr. ");
-  Serial.println(lastName);
   
-  //Now delete the last name. Restart the device and you'll see it is not in the eepromList();
-  eepromDelete("lastname");
-  Serial.println("Deleted lastname from eeprom");
+  eeprom.setFromList("&ssid=makerspaces&ssidpwd=boops&owner=Beau&email=beau@turner.com");
+  Serial.println(eeprom.list());
+  
 }
 
 void loop() {
