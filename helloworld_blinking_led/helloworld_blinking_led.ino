@@ -16,10 +16,10 @@
 
 */
 
-// on the NodeMCU board (it uses the esp8266 12e) I used
-// GPIO14 which is also D5 on the board. The pins have
+// on the NodeMCU 1.0 board (it uses the esp8266 12e) I used
+// GPIO2 which is also D4 on the board. The pins have
 // multiple names, choose the "GPIO" number.
-int ledPin = 14;
+int ledPin = 2;
 
 void setup() {
   Serial.begin(115200);
@@ -34,10 +34,12 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  Serial.println("LOW");
   digitalWrite(ledPin,LOW);
-  delay(300);
+  delay(1000);
+  Serial.println("HIGH");
   digitalWrite(ledPin,HIGH);
-  delay(300);
+  delay(1000);
   
 }
 

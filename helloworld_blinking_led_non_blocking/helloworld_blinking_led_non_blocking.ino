@@ -29,7 +29,7 @@
 // on the NodeMCU board (it uses the esp8266 12e) I used
 // GPIO14 which is also D5 on the board. The pins have
 // multiple names, choose the "GPIO" number.
-int ledPin = 14;
+int ledPin = 1;
 
 void setup() {
   Serial.begin(115200);
