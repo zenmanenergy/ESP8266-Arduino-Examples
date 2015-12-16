@@ -1,4 +1,21 @@
 String nameValueFilePath="/config.txt";
+void dataRemove(String name){
+  Serial.println();
+  Serial.println("dataRemove");
+  Serial.print("name:");
+  Serial.println(name);
+  String contents=readFile(nameValueFilePath);
+  int findOldVarStart=contents.indexOf("&"+name+"=");
+  if (findOldVarStart > -1){
+    int findOldVarEnd=contents.indexOf("&",findOldVarStart+1);
+    if (findOldVarEnd==-1){
+      contents.remove(findOldVarStart);
+    }else{
+      contents.remove(findOldVarStart,findOldVarEnd-findOldVarStart);
+    }
+  }
+  writeFile(nameValueFilePath, contents);
+}
 
 String dataGet(String name){
   String value="";
@@ -16,6 +33,7 @@ String dataGet(String name){
 }
 
 void dataSet(String name, String value){
+  Serial.println();
   Serial.println("dataSet");
   Serial.print("name:");
   Serial.println(name);

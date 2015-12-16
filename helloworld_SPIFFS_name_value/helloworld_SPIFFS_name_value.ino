@@ -33,25 +33,37 @@ void setup() {
     delay(500);
   }
 
-  
-  
+
+  //uncomment this if you want to start over and remove the file completely.
+  //removeFile("/config.txt");
   
   //read a file from SPIFFS
   String contents=readFile("/config.txt");
   Serial.print("file contents:");
   Serial.println(contents);
+  Serial.println();
   
   
-  dataSet("ssid","nelsons2");
-  dataSet("dink","ado");
+  dataSet("ssid","mywifi");
+  dataSet("ssidPass","password");
+  
   String ssid=dataGet("ssid");
   Serial.println("-----");
   Serial.print("ssid:");
   Serial.println(ssid);
-  String ssidpass=dataGet("ssidpass");
+  Serial.println();
+  
+  String ssidPass=dataGet("ssidPass");
   Serial.println("-----");
-  Serial.print("ssidpass:");
-  Serial.println(ssidpass);
+  Serial.print("ssidPass:");
+  Serial.println(ssidPass);
+
+  dataRemove("ssidPass");
+  
+  String ssidPass2=dataGet("ssidPass");
+  Serial.println("-----");
+  Serial.print("ssidPass:");
+  Serial.println(ssidPass2);
  
 }
 
