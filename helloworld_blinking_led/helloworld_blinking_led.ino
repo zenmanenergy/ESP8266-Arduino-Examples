@@ -12,13 +12,16 @@
   Prerequisite Examples:
   https://github.com/zenmanenergy/ESP8266-Arduino-Examples/tree/master/helloworld_serial
 
+ on the NodeMCU 1.0 board (it uses the esp8266 12e) I used
+ GPIO2 which is also D4 on the board. The pins have
+ multiple names, choose the "GPIO" number.
+ 
+ This was tested using Arduino 1.6.8 and the esp8266 core 2.2.0
 
 
 */
 
-// on the NodeMCU 1.0 board (it uses the esp8266 12e) I used
-// GPIO2 which is also D4 on the board. The pins have
-// multiple names, choose the "GPIO" number.
+// GPIO 2 is D4 on the esp-12e board.
 int ledPin = 2;
 
 void setup() {
